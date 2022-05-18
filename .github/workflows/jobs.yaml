@@ -885,11 +885,11 @@ jobs:
   compile-job:
     name: Compiles on Go ${{ matrix.go-version }} and ${{ matrix.os }}
     needs:
-      - lint-job
-      - no-warnings-and-make-assets
+      # - lint-job
+      # - no-warnings-and-make-assets
       - reuse-golang-dependencies
-      - vulnerable-dependencies-checks
-      - semgrep-static-code-analysis
+      # - vulnerable-dependencies-checks
+      # - semgrep-static-code-analysis
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -923,11 +923,11 @@ jobs:
   cross-compile-1:
     name: Cross compile
     needs:
-      - lint-job
-      - no-warnings-and-make-assets
+      # - lint-job
+      # - no-warnings-and-make-assets
       - reuse-golang-dependencies
-      - vulnerable-dependencies-checks
-      - semgrep-static-code-analysis
+      # - vulnerable-dependencies-checks
+      # - semgrep-static-code-analysis
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -961,11 +961,11 @@ jobs:
   cross-compile-2:
     name: Cross compile 2
     needs:
-      - lint-job
-      - no-warnings-and-make-assets
+      # - lint-job
+      # - no-warnings-and-make-assets
       - reuse-golang-dependencies
-      - vulnerable-dependencies-checks
-      - semgrep-static-code-analysis
+      # - vulnerable-dependencies-checks
+      # - semgrep-static-code-analysis
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -999,11 +999,11 @@ jobs:
   cross-compile-3:
     name: Cross compile 3
     needs:
-      - lint-job
-      - no-warnings-and-make-assets
+      # - lint-job
+      # - no-warnings-and-make-assets
       - reuse-golang-dependencies
-      - vulnerable-dependencies-checks
-      - semgrep-static-code-analysis
+      # - vulnerable-dependencies-checks
+      # - semgrep-static-code-analysis
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -1037,11 +1037,11 @@ jobs:
   cross-compile-4:
     name: Cross compile 4
     needs:
-      - lint-job
-      - no-warnings-and-make-assets
+      # - lint-job
+      # - no-warnings-and-make-assets
       - reuse-golang-dependencies
-      - vulnerable-dependencies-checks
-      - semgrep-static-code-analysis
+      # - vulnerable-dependencies-checks
+      # - semgrep-static-code-analysis
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -1075,11 +1075,11 @@ jobs:
   cross-compile-5:
     name: Cross compile 5
     needs:
-      - lint-job
-      - no-warnings-and-make-assets
+      # - lint-job
+      # - no-warnings-and-make-assets
       - reuse-golang-dependencies
-      - vulnerable-dependencies-checks
-      - semgrep-static-code-analysis
+      # - vulnerable-dependencies-checks
+      # - semgrep-static-code-analysis
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
