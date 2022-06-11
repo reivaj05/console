@@ -91,11 +91,11 @@ func getMPIntegrationResponse(session *models.Principal, params operator_api.Get
 }
 
 func getMPEmail(ctx context.Context, clientSet K8sClientI) (string, error) {
-	cm, err := clientSet.getConfigMap(ctx, "default", getMPConfigMapKey(mpConfigMapKey), metav1.GetOptions{})
+	configMap, err := clientSet.getConfigMap(ctx, "default", getMPConfigMapKey(mpConfigMapKey), metav1.GetOptions{})
 	if err != nil {
 		return "", err
 	}
-	return cm.Data[mpEmail], nil
+	return configMap.Data[mpEmail], nil
 }
 
 func postMPIntegrationResponse(session *models.Principal, params operator_api.PostMPIntegrationParams) *models.Error {
