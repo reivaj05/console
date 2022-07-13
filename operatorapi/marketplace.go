@@ -26,7 +26,6 @@ import (
 	"time"
 
 	"github.com/go-openapi/runtime/middleware"
-	"github.com/golang-jwt/jwt/v4"
 	"github.com/minio/console/cluster"
 	"github.com/minio/console/models"
 	"github.com/minio/console/operatorapi/operations"
@@ -47,6 +46,7 @@ var (
 	defaultEUMPHost    = "https://marketplace-eu.apps.min.dev"
 	isMPEmailSet       = "isEmailSet"
 	emailNotSetMsg     = "Email was not sent in request"
+	mpUserAgent        = "mp_console"
 )
 
 func registerMarketplaceHandlers(api *operations.OperatorAPI) {
@@ -162,14 +162,17 @@ func createMPRequest(url, email string) (*http.Request, error) {
 	if err != nil {
 		return nil, err
 	}
-	jwtToken := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{})
-	jwtTokenString, err := jwtToken.SignedString([]byte(pkg.MPSecret))
-	if err != nil {
-		return nil, err
-	}
-	request.Header.Add("Cookie", fmt.Sprintf("jwtToken=%s", jwtTokenString))
 	request.Header.Add("Content-Type", "application/json")
+	request.Header.Set("User-Agent", getMPUserAgent())
 	return request, nil
+}
+
+func getMPUserAgent() string {
+	if pkg.Version == "(dev)" {
+		return "(dev)"
+	}
+	return mpUserAgent
+
 }
 
 func createCM() *corev1.ConfigMap {
